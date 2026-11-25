@@ -41,3 +41,6 @@ export default async function Notes({ searchParams }: { searchParams: Promise<{ 
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

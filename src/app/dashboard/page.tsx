@@ -52,14 +52,14 @@ export default async function Overview() {
               ))}
             </ul>
           ) : (
-            <p className="py-8 text-[16px] opacity-70">No notes yet. Create your first one and see a draft in under a minute.</p>
+            <p className="py-8 text-[16px] opacity-70">No encounters processed yet. Create a note to run the engine on your first encounter.</p>
           )}
         </section>
 
         <section className="bg-white p-6">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-xl font-semibold tracking-tight">Notifications {unread > 0 && <span className="ml-2 bg-sun px-2 py-0.5 text-xs">{unread}</span>}</h2>
-            {unread > 0 && <form action={markNotificationsRead}><button className="text-[13px] font-semibold underline">Mark read</button></form>}
+            {unread > 0 && <form action={markNotificationsRead}><button className="text-[13px] font-semibold underline">Mark all read</button></form>}
           </div>
           <ul className="space-y-4">
             {notifs?.map((n) => (
@@ -68,10 +68,13 @@ export default async function Overview() {
                 <div className="text-[14px] text-ink/70">{n.body}</div>
               </li>
             ))}
-            {!notifs?.length && <li className="text-[15px] opacity-60">Nothing new.</li>}
+            {!notifs?.length && <li className="text-[15px] opacity-60">No notifications.</li>}
           </ul>
         </section>
       </div>
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

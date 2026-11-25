@@ -11,14 +11,21 @@ const creds = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
+// Always derive the origin from the incoming request, so emailed links point at the live site the user is on.
 async function origin() {
   const h = await headers();
-  return process.env.NEXT_PUBLIC_SITE_URL || `${h.get("x-forwarded-proto") ?? "http"}://${h.get("host")}`;
+  const host = h.get("x-forwarded-host") ?? h.get("host");
+  const proto = h.get("x-forwarded-proto") ?? (host?.startsWith("localhost") ? "http" : "https");
+  return `${proto}://${host}`;
 }
 
 function safeNext(v: FormDataEntryValue | null) {
   const s = typeof v === "string" ? v : "";
-  return s.startsWith("/dashboard") ? s : "/dashboard";
+  return s.startsWith("/dashboard") && !s.startsWith("//") ? s : "/dashboard";
+}
+
+function planNext(v: FormDataEntryValue | null) {
+  return typeof v === "string" && ["starter", "professional", "practice"].includes(v) ? `/dashboard/billing?plan=${v}` : "/dashboard";
 }
 
 export async function login(_: AuthState, fd: FormData): Promise<AuthState> {
@@ -41,11 +48,11 @@ export async function signup(_: AuthState, fd: FormData): Promise<AuthState> {
   const { data, error } = await supabase.auth.signUp({
     email: p.data.email,
     password: p.data.password,
-    options: { data: { full_name: p.data.full_name }, emailRedirectTo: `${await origin()}/auth/callback` },
+    options: { data: { full_name: p.data.full_name }, emailRedirectTo: `${await origin()}/auth/callback?next=${encodeURIComponent(planNext(fd.get("plan")))}` },
   });
   if (error) return { error: error.message };
-  if (data.session) redirect("/dashboard");
-  return { message: "Check your email to confirm your account, then log in." };
+  if (data.session) redirect(planNext(fd.get("plan")));
+  return { message: "Confirmation sent. Open the link in your email to activate your account, then log in." };
 }
 
 export async function forgotPassword(_: AuthState, fd: FormData): Promise<AuthState> {

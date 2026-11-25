@@ -8,7 +8,7 @@ export type Profile = {
 };
 
 export async function requireUser() {
-  await connection(); // always request-time: depends on the signed-in user
+  await connection(); // the signed-in user is request-time data
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   if (!data.user) redirect("/login");

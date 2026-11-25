@@ -10,7 +10,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ n
   return (
     <>
       <h1 className="display display-sm mb-8">Log in</h1>
-      {error && <p className="mb-5 text-[15px] font-semibold text-red-700">That link is invalid or has expired. Please try again.</p>}
+      {error && <p className="mb-5 text-[15px] font-semibold text-red-700">This link is invalid or has expired. Request a new one and try again.</p>}
       <AuthForm
         action={login}
         hidden={{ next: next ?? "" }}

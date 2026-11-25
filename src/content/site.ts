@@ -1,91 +1,62 @@
-// Central site content. Metrics and testimonials marked `sample` are PLACEHOLDERS
-// and must be replaced with real, verified data before launch.
+// Single source of truth for marketing copy and plans.
+// Every capability described here exists in the product today.
 
 export const nav = [
-  { label: "Solutions", href: "/solutions" },
-  { label: "For Clinicians", href: "/clinicians" },
-  { label: "For Partners", href: "/partners" },
-  {
-    label: "Integrations",
-    href: "/ehr-integrations",
-    children: [
-      { label: "EHR Integrations", href: "/ehr-integrations", desc: "Two-way connections to major EHRs" },
-      { label: "Partner Toolkit", href: "/partners", desc: "APIs and SDKs for healthtech teams" },
-      { label: "Download Apps", href: "/download", desc: "Web, Chrome, iOS and Android" },
-    ],
-  },
-  {
-    label: "Resources",
-    href: "/resource-hub",
-    children: [
-      { label: "Resource Hub", href: "/resource-hub", desc: "Guides, case studies and reports" },
-      { label: "Blog", href: "/blog", desc: "Ideas on clinical workflow and AI" },
-      { label: "Events", href: "/events", desc: "Webinars and conferences" },
-      { label: "Press & Media", href: "/press-media", desc: "News and brand assets" },
-    ],
-  },
-  { label: "About ChartSpeak", href: "/about" },
+  { label: "Platform", href: "/platform" },
+  { label: "Teams", href: "/teams" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Trust", href: "/trust" },
+  { label: "About", href: "/about" },
 ];
 
 export const footerCols = [
   {
     title: "Product",
     links: [
-      { label: "Solutions", href: "/solutions" },
-      { label: "For Clinicians", href: "/clinicians" },
-      { label: "For Partners", href: "/partners" },
-      { label: "EHR Integrations", href: "/ehr-integrations" },
+      { label: "Platform", href: "/platform" },
+      { label: "Teams", href: "/teams" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Download", href: "/download" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About ChartSpeak", href: "/about" },
-      { label: "Careers", href: "/careers" },
-      { label: "Press & Media", href: "/press-media" },
-      { label: "Contact us", href: "/contact-us" },
+      { label: "About", href: "/about" },
+      { label: "Trust", href: "/trust" },
     ],
   },
   {
-    title: "Resources",
+    title: "Legal",
     links: [
-      { label: "Resource Hub", href: "/resource-hub" },
-      { label: "Blog", href: "/blog" },
-      { label: "Events", href: "/events" },
-      { label: "Help Center", href: "/contact-us#support" },
-    ],
-  },
-  {
-    title: "Legal & Trust",
-    links: [
-      { label: "Trust Center", href: "/trust" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
+    ],
+  },
+  {
+    title: "Account",
+    links: [
+      { label: "Log in", href: "/login" },
+      { label: "Sign up", href: "/signup" },
     ],
   },
 ];
 
 export const heroSlides = [
   {
-    title: "Healthcare’s next chapter starts here",
-    body: "Meet the ambient operating layer that links your clinical workflows, takes action on your behalf and keeps every encounter moving, so your to-dos become done.",
-    cta: { label: "Explore ChartSpeak", href: "/solutions" },
+    title: "The AI engine behind every clinical encounter",
+    body: "ChartSpeak analyzes the conversation, drafts the note, assigns evidence-linked codes and writes the patient instructions. Care organizations close charts faster and stop leaking revenue to missed specificity.",
     a: "#c2b872",
     b: "#6f6a38",
   },
   {
-    title: "Less typing. More looking up at your patient",
-    body: "Notes, orders and patient instructions are drafted while you talk, then waiting for your review the moment the visit ends.",
-    cta: { label: "See the clinician workflow", href: "/clinicians" },
+    title: "Documentation that decides what happens next",
+    body: "Every encounter becomes structured data: diagnoses, procedures, level of service and follow-up. One AI pass feeds coding, quality review and patient communication.",
     a: "#9fb59a",
     b: "#4c6350",
   },
   {
-    title: "Build ambient AI into your own product",
-    body: "Our APIs and SDKs give EHRs, telehealth and care-management platforms a faster path to documentation intelligence.",
-    cta: { label: "Talk to our partner team", href: "/partners" },
+    title: "Operational control for care organizations",
+    body: "Row-level data isolation, metered AI usage and mandatory clinician review give operators the governance that production AI requires.",
     a: "#b9a0a0",
     b: "#6a4848",
   },
@@ -95,57 +66,55 @@ export const capabilityTabs = [
   {
     key: "documentation",
     label: "Ambient Documentation",
-    body: "ChartSpeak does more than transcribe. It follows the whole patient conversation and produces a complete note, patient instructions and proposed orders. Voice-enabled editing and problem-based charting let the note take the shape each clinician prefers.",
+    body: "The model reads the full encounter, from an uploaded recording or a transcript, and drafts a complete note in the structure each service line requires. It identifies what the encounter did not establish and flags the gap instead of inventing it.",
     points: [
-      "Gives time back and lightens the mental load of charting",
-      "Lets you stay present without losing productivity",
-      "Produces clear clinical notes ready to review and export",
+      "Cuts after-hours charting by drafting the note before the next visit begins",
+      "Flags missing history, dosage and exam detail so gaps surface before signature",
+      "Produces SOAP, history and physical, and progress note structures on demand",
     ],
   },
   {
     key: "revenue",
-    label: "Assisted Revenue Cycle",
-    body: "Documentation captured at the point of care becomes structured, billable information. Suggested ICD-10, CPT and E/M codes come with the evidence from the encounter, so coding is faster and more defensible.",
+    label: "Revenue Integrity",
+    body: "The AI proposes ICD-10, CPT and E/M codes only where the encounter supports them, and quotes the exact passage that justifies each one. Coders verify evidence in seconds instead of rereading the chart.",
     points: [
-      "Suggests specific diagnosis codes while the visit happens",
-      "Links every suggestion to the sentence that supports it",
-      "Reduces amended encounters and back-and-forth with coders",
+      "Raises diagnosis specificity with evidence attached to every suggestion",
+      "Reduces denials and amended encounters caused by unsupported codes",
+      "Gives revenue cycle teams an auditable trail from code to source sentence",
     ],
   },
   {
-    key: "reasoning",
-    label: "Clinical Reasoning",
-    body: "Ask questions and get patient summaries without leaving the workflow. ChartSpeak assembles history before the visit and answers follow-up questions in the context of the chart you are working on.",
+    key: "communication",
+    label: "Patient Communication",
+    body: "Discharge and follow-up instructions are generated from the same encounter, at a plain reading level, in the language the patient speaks. The note stays in English for the record.",
     points: [
-      "Concise pre-visit patient summaries",
-      "Context-aware answers to clinical questions",
-      "Always labelled as decision support, never a substitute for judgment",
+      "Removes manual instruction writing from the end of every visit",
+      "Delivers instructions in more than a dozen languages from one encounter",
+      "Keeps instructions consistent with the clinical plan, because both come from one source",
     ],
   },
 ];
 
+export const pipeline = [
+  { t: "Capture", d: "Audio upload or transcript enters a private, access-controlled workspace." },
+  { t: "Analyze", d: "The model extracts findings, problems, medications and plan, and records what is missing." },
+  { t: "Decide", d: "Codes and levels of service are proposed with the supporting quote for each." },
+  { t: "Deliver", d: "A clinician reviews, edits and exports the note and the patient instructions." },
+];
+
+export const outcomes = [
+  { k: "Revenue", t: "Capture the specificity you currently miss", d: "Evidence-linked ICD-10, CPT and E/M suggestions raise coding precision on every encounter." },
+  { k: "Cost", t: "Take documentation labor out of the clinical day", d: "One AI pass replaces note drafting, instruction writing and first-pass coding review." },
+  { k: "Speed", t: "Close the chart while the encounter is fresh", d: "Drafts are ready minutes after the visit, not hours into the evening." },
+  { k: "Risk", t: "Keep every AI output under clinical control", d: "Nothing is exported without review, and every code traces to its source sentence." },
+];
+
 export const builtDifferent = [
-  { t: "AI native from day one", d: "Designed around language models rather than retrofitted, so improvements reach clinicians quickly and the product stays ready for what comes next." },
-  { t: "Beyond the note", d: "Documentation, coding suggestions, patient instructions and Q&A live in a single assistant that keeps gaining capabilities." },
-  { t: "Built to embed", d: "A structured data layer and open APIs let ChartSpeak work beside the EHR you already use instead of replacing it." },
-  { t: "Quality you can inspect", d: "Every generated statement can be traced to the transcript, and every note passes through your review before it goes anywhere." },
-  { t: "Security by design", d: "Row-level data isolation, encrypted storage and audit-friendly access controls are part of the foundation. See our Trust Center for current status." },
-];
-
-// SAMPLE metrics: replace with measured results.
-export const stats = [
-  { n: 40, suffix: "%", label: "target reduction", sub: "in time spent on notes" },
-  { n: 3, suffix: "x", label: "target faster", sub: "chart completion" },
-  { n: 50, suffix: "%", label: "target reduction", sub: "in after-hours charting" },
-  { n: 30, suffix: "%", label: "target reduction", sub: "in amended encounters" },
-  { n: 100, suffix: "+", label: "specialty templates", sub: "planned at launch" },
-];
-
-// SAMPLE testimonials: placeholders, not real clinician quotes.
-export const testimonials = [
-  { name: "Sample clinician", role: "Family Medicine", quote: "I stopped carrying my charts home. The note is waiting for me when the patient leaves the room." },
-  { name: "Sample clinician", role: "Pediatrics", quote: "Parents notice that I look at their child now, not at a screen. That changed the visit." },
-  { name: "Sample clinician", role: "Internal Medicine", quote: "Editing by voice is the part I did not expect to love. It takes seconds." },
+  { t: "AI is the engine, not an add-on", d: "The product is built around the model. Capture, analysis, coding and communication are one pipeline rather than separate tools stitched together." },
+  { t: "Structured output, validated every time", d: "Model responses are constrained to a strict schema and validated before they reach a screen. Malformed output fails safely and the credit is returned." },
+  { t: "Evidence on every decision", d: "Each suggested code carries the passage from the encounter that supports it, so verification is a read, not a hunt." },
+  { t: "Governed by design", d: "Row-level security isolates every account, audio sits in private storage, and model credentials never reach the browser." },
+  { t: "Metered for operators", d: "Plans carry explicit monthly volume. Usage is enforced on the server and recorded per account." },
 ];
 
 export const specialties = [
@@ -157,12 +126,12 @@ export const careSettings = ["Ambulatory", "Inpatient", "Emergency Department", 
 export const languages = ["Spanish","Russian","Korean","Polish","Mandarin Chinese","Farsi","Hindi","Telugu","Arabic","French","Portuguese","German","Vietnamese","Tagalog","Swahili","Yoruba"];
 
 export const faqs = [
-  { q: "What makes ChartSpeak different from other ambient tools?", a: "Most ambient tools stop at the note. ChartSpeak turns the conversation into structured data that also powers coding suggestions, patient instructions, orders and clinical Q&A, so one recording supports many downstream tasks." },
-  { q: "Which EHRs does ChartSpeak work with?", a: "Today notes can be copied or exported as structured text and PDF. Direct two-way EHR connections are on the roadmap and are delivered through our partner program. See the EHR Integrations page for current status." },
-  { q: "Can ChartSpeak handle multiple languages?", a: "Yes. Conversations in many languages can be summarised into an English clinical note, and patient instructions can be generated in the patient’s language at a plain reading level." },
-  { q: "Does ChartSpeak support multiple specialties?", a: "Note templates are specialty-aware and can be personalised. Pick a template per visit or build your own." },
-  { q: "How secure is ChartSpeak?", a: "Data is stored in an access-controlled database with row-level security, and files are kept in private storage. Visit the Trust Center for our current security and compliance posture." },
-  { q: "How much does ChartSpeak cost?", a: "Plans start with a free trial and scale by usage. See the Pricing page for details." },
+  { q: "How is ChartSpeak different from transcription tools?", a: "Transcription stops at text. ChartSpeak analyzes the encounter and produces decisions: a structured note, evidence-linked codes and patient instructions, from a single pass." },
+  { q: "What inputs does the platform accept?", a: "Audio recordings up to 18 MB and pasted transcripts up to 60,000 characters. Each encounter becomes one reviewable note." },
+  { q: "How are coding suggestions kept defensible?", a: "The model proposes a code only when the encounter supports it and must quote the supporting passage. Coders and clinicians verify against that quote." },
+  { q: "Which languages are supported?", a: "Patient instructions can be generated in more than a dozen languages. The clinical note itself is written in English." },
+  { q: "How is access controlled?", a: "Every record is isolated per account in the database, audio is stored privately, and AI requests run only on the server. The Trust page describes the full control set." },
+  { q: "How does billing work?", a: "Three monthly plans set the number of note generations. Usage is metered on the server and failed generations do not consume volume." },
 ];
 
 export const plans = [
@@ -170,28 +139,28 @@ export const plans = [
     id: "starter",
     name: "Starter",
     price: 47,
-    blurb: "For an individual clinician getting started with ambient notes.",
+    blurb: "Single-clinician deployments validating AI documentation.",
     credits: 50,
-    features: ["50 note generations per month", "Core note templates", "Voice and text editing", "PDF and text export", "Email support"],
+    features: ["50 AI note generations per month", "SOAP, history and physical, and progress templates", "Evidence-linked ICD-10, CPT and E/M suggestions", "Patient instructions in 16 languages", "Audio upload and transcript input"],
     url: "https://selar.com/47plan?currency=USD",
   },
   {
     id: "professional",
     name: "Professional",
     price: 57,
-    blurb: "For busy clinicians who want coding help and patient instructions.",
+    blurb: "Active clinicians running documentation at production volume.",
     credits: 150,
     popular: true,
-    features: ["150 note generations per month", "All specialty templates", "ICD-10, CPT and E/M suggestions", "Multilingual patient instructions", "Patient summaries", "Priority support"],
+    features: ["150 AI note generations per month", "SOAP, history and physical, and progress templates", "Evidence-linked ICD-10, CPT and E/M suggestions", "Patient instructions in 16 languages", "Audio upload and transcript input"],
     url: "https://selar.com/57plan?currency=USD",
   },
   {
     id: "practice",
     name: "Practice",
     price: 97,
-    blurb: "For high-volume clinicians and small practices.",
+    blurb: "High-volume clinicians and practices with sustained encounter load.",
     credits: 500,
-    features: ["500 note generations per month", "Everything in Professional", "Order staging drafts", "Clinical Q&A assistant", "Custom note personalisation", "Onboarding call"],
+    features: ["500 AI note generations per month", "SOAP, history and physical, and progress templates", "Evidence-linked ICD-10, CPT and E/M suggestions", "Patient instructions in 16 languages", "Audio upload and transcript input"],
     url: "https://selar.com/97plan?currency=USD",
   },
 ];

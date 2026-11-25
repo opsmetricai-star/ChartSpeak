@@ -9,8 +9,7 @@ export default async function Admin() {
   const { profile } = await requireUser();
   if (!profile.is_admin) notFound();
   const admin = createAdminClient();
-  const [{ data: leads }, { data: payments }] = await Promise.all([
-    admin.from("contact_leads").select("*").order("created_at", { ascending: false }).limit(25),
+  const [{ data: payments }] = await Promise.all([
     admin.from("payments").select("*").order("created_at", { ascending: false }).limit(15),
   ]);
   return (
@@ -28,18 +27,9 @@ export default async function Admin() {
           {!payments?.length && <li className="opacity-60">None yet.</li>}
         </ul>
       </section>
-      <section className="bg-white p-6 sm:p-8">
-        <h2 className="mb-4 text-xl font-semibold tracking-tight">Contact leads</h2>
-        <ul className="divide-y divide-line">
-          {leads?.map((l) => (
-            <li key={l.id} className="py-4">
-              <div className="font-semibold">{l.first_name} {l.last_name} <span className="font-normal opacity-60">· {l.email} · {l.topic}</span></div>
-              <p className="mt-1 whitespace-pre-wrap text-[15px] opacity-80">{l.message}</p>
-            </li>
-          ))}
-          {!leads?.length && <li className="opacity-60">None yet.</li>}
-        </ul>
-      </section>
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

@@ -30,7 +30,7 @@ export function HeroCarousel() {
         <div className="absolute inset-0 bg-[repeating-linear-gradient(115deg,transparent_0_90px,rgba(0,0,0,0.07)_90px_170px)]" />
       </div>
 
-      <div className="relative mx-auto grid h-full max-w-[1440px] grid-cols-1 gap-10 px-5 py-14 lg:grid-cols-[1.5fr_1fr] lg:px-12 lg:py-14">
+      <div className="relative mx-auto grid h-full max-w-[1440px] grid-cols-1 gap-10 px-5 pb-24 pt-14 lg:grid-cols-[1.5fr_1fr] lg:px-12 lg:py-14">
         {/* headline with left rule */}
         <div className="relative pl-6 lg:pl-10" key={`h-${i}`}>
           <span className="absolute bottom-0 left-0 top-0 w-[3px] bg-white lg:bottom-auto lg:h-[160px]" />
@@ -49,8 +49,8 @@ export function HeroCarousel() {
           </div>
           <div className="animate-[fadeUp_1s_0.15s_ease_both] border-l-[3px] border-white pl-6 lg:pl-7">
             <p className="max-w-[420px] text-[19px] font-medium leading-[1.4]">{s.body}</p>
-            <Link href={s.cta.href} className="mt-10 inline-block bg-white px-8 py-4 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-0.5">
-              {s.cta.label}
+            <Link href="/signup" className="mt-10 inline-block bg-white px-8 py-4 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-0.5">
+              Sign up
             </Link>
           </div>
         </div>

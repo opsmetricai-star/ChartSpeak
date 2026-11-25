@@ -5,16 +5,13 @@ import { Logo } from "./Logo";
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-white">
-      <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-16 lg:px-10 lg:pt-24">
-        <div className="grid gap-14 lg:grid-cols-[1.3fr_2fr]">
+      <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-16 lg:px-10 lg:pt-20">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div>
             <Logo className="text-white" />
             <p className="mt-6 max-w-sm text-[17px] leading-snug text-white/75">
-              The intelligence layer that lets clinicians look up from the screen and back at the patient.
+              The AI engine for clinical documentation and revenue intelligence.
             </p>
-            <Link href="/contact-us" className="mt-8 inline-block bg-sun px-7 py-3.5 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-0.5">
-              Contact us
-            </Link>
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
             {footerCols.map((c) => (
@@ -33,11 +30,9 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/15 pt-8 text-[13px] text-white/55 sm:flex-row sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/15 pt-8 text-[13px] text-white/55 sm:flex-row sm:justify-between">
           <p>© 2026 ChartSpeak. All rights reserved.</p>
-          <p className="max-w-xl">
-            ChartSpeak assists with documentation and is not a medical device. Clinicians remain responsible for reviewing all generated content.
-          </p>
+          <p className="max-w-xl">ChartSpeak drafts documentation for clinician review. It is not a medical device, and clinicians remain responsible for all content they approve.</p>
         </div>
       </div>
     </footer>

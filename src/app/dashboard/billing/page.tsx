@@ -3,7 +3,8 @@ import { plans } from "@/content/site";
 
 export const metadata = { title: "Billing" };
 
-export default async function Billing() {
+export default async function Billing({ searchParams }: { searchParams: Promise<{ plan?: string }> }) {
+  const { plan: chosen } = await searchParams;
   const { supabase, profile } = await requireUser();
   const { data: payments } = await supabase.from("payments").select("id,plan,amount,reference,created_at").order("created_at", { ascending: false }).limit(10);
   const left = Math.max(profile.credits_total - profile.credits_used, 0);
@@ -18,10 +19,10 @@ export default async function Billing() {
         <div className="bg-white p-6"><div className="text-xs font-semibold uppercase tracking-widest opacity-50">{profile.plan === "trial" ? "Trial" : "Usage resets"}</div><div className="mt-2 text-3xl font-semibold tracking-tight">{profile.plan === "trial" ? "No expiry" : renews}</div></div>
       </div>
 
-      <h2 className="mt-12 text-2xl font-semibold tracking-tight">Upgrade</h2>
+      <h2 className="mt-12 text-2xl font-semibold tracking-tight">Plans</h2>
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         {plans.map((p) => (
-          <div key={p.id} className={`flex flex-col p-6 ${p.popular ? "bg-ink text-white" : "bg-white"}`}>
+          <div key={p.id} className={`flex flex-col p-6 ${p.popular ? "bg-ink text-white" : "bg-white"} ${chosen === p.id ? "outline outline-4 outline-sun" : ""}`}>
             <div className="text-xl font-semibold">{p.name}</div>
             <div className="mt-2"><span className="display text-4xl">${p.price}</span> <span className="opacity-60">/ month</span></div>
             <div className="mt-2 text-[15px] opacity-75">{p.credits} notes per month</div>
@@ -34,7 +35,7 @@ export default async function Billing() {
         ))}
       </div>
       <p className="mt-5 max-w-2xl text-[14px] leading-relaxed opacity-70">
-        Use the same email address ({profile.email}) at checkout. Your plan activates after we receive confirmation of payment from Selar, which is not instant on redirect. If it has not updated within a few hours, contact support with your Selar order reference.
+        Use the same email address ({profile.email}) at checkout so the payment matches this account. A plan activates when payment is confirmed, never on redirect alone.
       </p>
 
       <h2 className="mt-12 text-2xl font-semibold tracking-tight">Payment history</h2>
@@ -50,3 +51,6 @@ export default async function Billing() {
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

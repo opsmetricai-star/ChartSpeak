@@ -8,8 +8,11 @@ export default async function Page() {
   return (
     <div className="mx-auto max-w-3xl">
       <h1 className="display display-sm">New note</h1>
-      <p className="mt-3 max-w-xl text-[16px] text-ink/70">Paste a transcript or upload a recording. ChartSpeak drafts a structured note for you to review. Use de-identified or synthetic data only until your healthcare agreements are in place.</p>
+      <p className="mt-3 max-w-xl text-[16px] text-ink/70">Submit an encounter transcript or recording. The engine returns a structured note, evidence-linked codes and patient instructions for clinician review. Use de-identified or synthetic data until business associate agreements are in place.</p>
       <NewNoteForm defaultSpecialty={profile.specialty ?? ""} />
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

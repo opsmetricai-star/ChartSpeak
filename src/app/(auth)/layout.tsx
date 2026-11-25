@@ -9,7 +9,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="absolute inset-0 bg-[repeating-linear-gradient(115deg,transparent_0_90px,rgba(0,0,0,0.07)_90px_170px)]" />
         <div className="relative flex h-full flex-col justify-between p-12">
           <Link href="/"><Logo className="text-white" /></Link>
-          <h2 className="display display-md max-w-md">Be in the moment of patient care. We’ll handle the rest.</h2>
+          <h2 className="display display-md max-w-md">The AI engine for clinical documentation and revenue intelligence.</h2>
         </div>
       </div>
       <div className="flex flex-col justify-center px-6 py-12 sm:px-16">

@@ -30,7 +30,7 @@ export async function generateNote(opts: {
   audio?: { mime: string; base64: string };
 }): Promise<GeneratedNote> {
   const key = process.env.GEMINI_API_KEY;
-  if (!key) throw new Error("AI is not configured");
+  if (!key) throw new Error("The AI service is temporarily unavailable.");
 
   const parts: Part[] = [];
   if (opts.audio) parts.push({ inline_data: { mime_type: opts.audio.mime, data: opts.audio.base64 } });

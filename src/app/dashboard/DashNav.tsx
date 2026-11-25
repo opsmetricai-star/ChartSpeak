@@ -14,7 +14,7 @@ export function DashNav({ admin }: { admin: boolean }) {
   const path = usePathname();
   const list = admin ? [...items, { href: "/dashboard/admin", label: "Admin" }] : items;
   return (
-    <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:block lg:px-3 lg:pb-0" aria-label="Dashboard">
+    <nav className="flex flex-wrap gap-1 px-3 pb-3 lg:block lg:px-3 lg:pb-0" aria-label="Dashboard">
       {list.map((i) => {
         const active = i.exact ? path === i.href : path.startsWith(i.href) && !(i.href === "/dashboard/notes" && path === "/dashboard/notes/new");
         return (

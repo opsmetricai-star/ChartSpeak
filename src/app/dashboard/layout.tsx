@@ -1,13 +1,28 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { requireUser } from "@/lib/data";
 import { logout } from "../(auth)/actions";
 import { Logo } from "@/components/Logo";
 import { DashNav } from "./DashNav";
 
+// Authenticated routes are request-time by nature; they block on the server instead of prerendering a shell.
+export const instant = false;
+
 export const metadata: Metadata = { title: { default: "Dashboard", template: "%s | ChartSpeak" }, robots: { index: false } };
 
-export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+function ShellFallback() {
+  return (
+    <div className="min-h-screen bg-mist lg:grid lg:grid-cols-[260px_1fr]">
+      <aside className="border-b border-line bg-white px-5 py-4 lg:h-screen lg:border-b-0 lg:border-r lg:py-7">
+        <Link href="/dashboard"><Logo /></Link>
+      </aside>
+      <div className="p-5 sm:p-8 lg:p-12" aria-busy="true" />
+    </div>
+  );
+}
+
+async function Shell({ children }: { children: React.ReactNode }) {
   const { profile } = await requireUser();
   const left = Math.max(profile.credits_total - profile.credits_used, 0);
   return (
@@ -29,5 +44,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
       </aside>
       <div className="min-w-0 p-5 sm:p-8 lg:p-12">{children}</div>
     </div>
+  );
+}
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<ShellFallback />}>
+      <Shell>{children}</Shell>
+    </Suspense>
   );
 }

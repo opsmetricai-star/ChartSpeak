@@ -2,45 +2,30 @@ import type { Metadata } from "next";
 import { PageHero, Section, CtaBand } from "@/components/blocks";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = { title: "About ChartSpeak" };
+export const metadata: Metadata = { title: "About" };
 
 const values = [
-  { t: "Every pixel serves the clinician.", d: "Clinicians change lives. We build tools that fit how they work and make their day easier, not harder." },
-  { t: "Always be learning.", d: "We stay curious, ask the extra question and learn from every clinician who uses the product." },
-  { t: "Deliver quickly, think long term.", d: "We take on hard problems and move steadily, without trading away quality." },
-  { t: "Walk the right path.", d: "Trust is everything in healthcare. We do the right thing even when a shortcut is available." },
-  { t: "Be a team of champions.", d: "We keep our commitments to one another and protect the balance that lets people do their best work." },
+  { t: "Every output serves the clinician.", d: "We build for people who make high-stakes decisions under time pressure. If a feature does not save them attention, it does not ship." },
+  { t: "Evidence over assertion.", d: "AI that cannot show its source does not belong in a medical record. Every suggestion we make points back to the encounter." },
+  { t: "Speed with discipline.", d: "We move fast on the model and slow on the controls. Validation, review and isolation are never the part we cut." },
+  { t: "Integrity in the record.", d: "The medical record carries legal and clinical weight. We design so that clinicians stay accountable for every word in it." },
+  { t: "Operators first.", d: "Healthcare organizations buy outcomes and governance. We measure ourselves on both." },
 ];
 
 export default function About() {
   return (
     <>
-      <PageHero tone="olive" title="Building presence at the heart of care" body="Our mission is simple: ambient intelligence that assists clinicians so they can focus on what matters most." />
+      <PageHero tone="olive" title="Building the AI layer for clinical operations" body="ChartSpeak exists to remove administrative load from clinical work, so every encounter is captured completely and every decision is backed by evidence." />
 
-      <Section title="At ChartSpeak, presence is both product and promise">
+      <Section title="The problem we are solving">
         <Reveal>
           <p className="max-w-3xl text-[clamp(1.2rem,2vw,1.6rem)] leading-snug">
-            Time is the scarcest resource in medicine, and too much of it disappears into paperwork. ChartSpeak gives clinicians end-to-end support so they can be fully present, during working hours and after them.
+            Clinical documentation consumes hours that organizations pay for twice: once in clinician time, and again in revenue lost to missed specificity and unsupported codes. We replace that manual work with an AI engine that analyzes the encounter once and delivers every downstream artifact.
           </p>
         </Reveal>
       </Section>
 
-      <Section bg="bg-mist" title="Our team">
-        <Reveal>
-          <p className="max-w-2xl text-[19px] leading-snug opacity-80">ChartSpeak is a new company. Our leadership page will list the clinicians, engineers and operators behind the product as the team is announced.</p>
-        </Reveal>
-        <div className="mt-10 grid gap-px bg-ink/15 sm:grid-cols-2 lg:grid-cols-3">
-          {["Founder & CEO", "Chief Medical Officer", "Chief Technology Officer"].map((r) => (
-            <div key={r} className="bg-white p-8">
-              <div className="mb-8 aspect-[4/3] bg-sun-soft" />
-              <div className="font-semibold">To be announced</div>
-              <div className="text-[15px] opacity-60">{r}</div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section bg="bg-ink text-white" title="Values we live by" intro="Our core values guide what we do and how we do it.">
+      <Section bg="bg-ink text-white" title="Principles">
         <ol className="divide-y divide-white/20 border-y border-white/20">
           {values.map((v, k) => (
             <Reveal as="li" key={v.t} className="grid gap-4 py-8 md:grid-cols-[80px_1fr_1.2fr]">
@@ -52,7 +37,7 @@ export default function About() {
         </ol>
       </Section>
 
-      <CtaBand title="Let’s build the future of healthcare together" body="Help us build technology that elevates the practice of medicine." primary={{ label: "Join the team", href: "/careers" }} />
+      <CtaBand title="Deploy the engine in your organization" />
     </>
   );
 }

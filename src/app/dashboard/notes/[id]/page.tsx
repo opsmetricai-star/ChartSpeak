@@ -15,7 +15,7 @@ export default async function NotePage({ params }: { params: Promise<{ id: strin
 
   return (
     <div className="mx-auto max-w-4xl">
-      <Link href="/dashboard/notes" className="text-[14px] font-semibold underline underline-offset-4">← All notes</Link>
+      <Link href="/dashboard/notes" className="text-[14px] font-semibold underline underline-offset-4">All notes</Link>
       {note.status === "ready" ? (
         <NoteEditor
           id={note.id}
@@ -39,3 +39,6 @@ export default async function NotePage({ params }: { params: Promise<{ id: strin
     </div>
   );
 }
+
+// Signed-in screens render per request; they block on the server rather than prerendering.
+export const instant = false;

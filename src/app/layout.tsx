@@ -11,11 +11,11 @@ const grotesk = Hanken_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "ChartSpeak: Ambient Clinical Intelligence for Documentation",
+    default: "ChartSpeak: The AI Engine for Clinical Documentation and Revenue Intelligence",
     template: "%s | ChartSpeak",
   },
   description:
-    "ChartSpeak listens to the patient conversation and drafts structured clinical notes, coding suggestions and patient instructions, so clinicians can stay present.",
+    "ChartSpeak analyzes clinical encounters and produces structured notes, evidence-linked codes and patient instructions in one governed AI pass.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

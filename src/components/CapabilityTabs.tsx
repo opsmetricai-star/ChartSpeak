@@ -15,12 +15,15 @@ function Mock({ k }: { k: string }) {
         ))}
       </div>
     );
-  if (k === "reasoning")
+  if (k === "communication")
     return (
       <div className="space-y-3 text-[15px]">
-        <div className="ml-10 rounded-sm bg-ink p-4 text-white">Summarise this patient’s last three visits.</div>
-        <div className="mr-10 rounded-sm bg-white p-4 shadow-sm">Stable A1c trend, new complaint of fatigue, metformin dose increased in March. Labs pending from last visit.</div>
-        <div className="flex gap-2 text-xs"><span className="rounded-full bg-ink/10 px-3 py-1">Decision support only</span></div>
+        {[["English", "Take the medication with food. Return in four weeks."], ["Spanish", "Tome el medicamento con comida. Regrese en cuatro semanas."], ["Hindi", "दवा खाने के साथ लें। चार सप्ताह में वापस आएं।"]].map(([l, t]) => (
+          <div key={l} className="rounded-sm bg-white p-4 shadow-sm">
+            <div className="mb-1 text-xs font-semibold uppercase tracking-widest text-ink/50">{l}</div>
+            {t}
+          </div>
+        ))}
       </div>
     );
   return (
