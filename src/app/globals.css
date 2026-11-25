@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1a1a1a;
+  --paper: #ffffff;
+  --sun: #ffe34d; /* primary yellow button */
+  --sun-soft: #fff190; /* pale yellow band */
+  --olive: #b4aa68; /* hero olive */
+  --olive-deep: #6d6637;
+  --mist: #f4f2ea;
+  --line: #e4e1d4;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Display headings: heavy, tight grotesque like the reference */
+.display {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+.display-lg {
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+}
+.display-md {
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+}
+.display-sm {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  line-height: 1.08;
+}
+
+/* Section container with the reference's left rule */
+.rule-left {
+  position: relative;
+  padding-left: 2rem;
+}
+.rule-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: currentColor;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Blurred drifting hero blobs */
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, -6%) scale(1.15); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-10%, 8%) scale(0.95); }
+}
+.blob-a { animation: drift-a 14s ease-in-out infinite; }
+.blob-b { animation: drift-b 18s ease-in-out infinite; }
+
+/* Audio-bar visual (Presence band) */
+@keyframes bar-pulse {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+.audio-bar {
+  transform-origin: bottom;
+  animation: bar-pulse 3.2s ease-in-out infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 38s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .blob-a, .blob-b, .audio-bar, .marquee-track { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
